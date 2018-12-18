@@ -20,6 +20,21 @@ const list = document.getElementsByClassName('student-item cf');
 
 
 
+   const paginationDiv = document.createElement('div');
+   paginationDiv.classList.add('pagination');
+   const pageDiv = document.querySelector('.page');
+   pageDiv.append(paginationDiv);
+
+   const paginationUl = document.createElement('ul');
+   paginationDiv.appendChild(paginationUl);
+
+   
+  
+
+   
+
+
+
 
 
 /*** 
@@ -46,8 +61,10 @@ const showPage = (list,page) => {
    
    for ( let i = 0; i < list.length; i++) {
       if(i >= firstItemOnPage && i <= lastItemOnThePage ) {
-     list[i] ;
-   } 
+            list[i].style.display = '' ;
+   }  else { 
+      list[i].style.display = 'none';
+   }
    /*
    Loop over items in the list parameter
    -- If the index of a list item is >= the index of the first
@@ -55,6 +72,7 @@ const showPage = (list,page) => {
    -- && the list item index is <= the index of the last item
    that should be shown on the page, show it
    */
+  
    }
 }
 
@@ -72,30 +90,24 @@ page's link. For example, clicking the link to page 2 will display students 11 t
 highlight button 2.
 ***/
 const appendPageLinks = (list) => {
-   const numberOfPages = Math.ceil(list.length/10);
 
-   const paginationDiv = document.createElement('div');
-   paginationDiv.classList.add('pagination');
-   const pageDiv = document.querySelector('.page');
-   pageDiv.append(paginationDiv);
+   let numberOfPages = Math.ceil(list.length/10);
 
-   const paginationUl = document.createElement('ul');
-   paginationDiv.appendChild(paginationUl);
+   for(let i = 0; i < numberOfPages; i++){
 
-  
-
-   for(let i = 0; i<numberOfPages; i++){
-
-      const paginationLi = document.createElement('li');
-      //paginationLi.textContent = i;
+      let paginationLi = document.createElement('li');
       paginationUl.appendChild(paginationLi);
+   
 
-      const paginationAnchor = document.createElement('a');
-      paginationAnchor.textContent = i;
+      let paginationAnchor = document.createElement('a');
+      paginationAnchor.textContent = i+1;
       paginationLi.appendChild(paginationAnchor);
+   }
 
-      paginationAnchor.addEventListener('click', () => {
-         showPage(list,i);
+   
+      paginationDiv.addEventListener('click', (e) => {
+         let pageNumber = e.target.textContent;
+         showPage(list,pageNumber);
     });
    }
 
@@ -118,7 +130,7 @@ call the showPage function to display the appropriate page
 7. Add the active class to the link that was just clicked. You can identify that
 clicked link using event.target
 */
-}
+
 
 
 
