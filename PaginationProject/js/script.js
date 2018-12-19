@@ -52,6 +52,9 @@ const appendPageLinks = (list) => {
       const paginationAnchor = document.createElement('a');
       paginationAnchor.textContent = i+1;
       paginationLi.appendChild(paginationAnchor);
+      if (paginationAnchor.textContent == 1){
+         paginationAnchor.className = 'active';
+      }
    }
    
 
