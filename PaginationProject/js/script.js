@@ -1,4 +1,5 @@
-
+/* Declared all the global variables, appended the pagination Div and a Ul to the .page Div 
+*/
 const list = document.getElementsByClassName('student-item cf');
 
 
@@ -14,7 +15,12 @@ const list = document.getElementsByClassName('student-item cf');
    
   
 
+/*
+function showPage, it loops through the list items and checks if the first item on the page is >= then the first element on the list,
+and if the last item on the page is <= then the last element on the list, displays 10 elements depending on which page we've selected
+and hides the rest
 
+*/
 const showPage = (list,page) => {
    page *=10;
    const firstItemOnPage = (page - 10);
@@ -29,6 +35,10 @@ const showPage = (list,page) => {
    }
 }
 
+/*
+function appendPageLinks generates and appends 'li' and 'a' elements on the pagination Div, on 'click' it removes
+the active class from the 'a' elements and gives the clicked 'a' link the active class
+*/
 const appendPageLinks = (list) => {
 
    const numberOfPages = Math.ceil(list.length/10);
@@ -61,5 +71,9 @@ const appendPageLinks = (list) => {
     });
 }
 
+/*call to the appendPageLinks function, passing the list of students, 
+and a call to the showPage function with the list of the students and page value of 1
+because I want the first page, the page with the first ten students show at the initial load
+*/
 appendPageLinks(list,showPage(list,1));
    
