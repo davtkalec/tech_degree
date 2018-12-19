@@ -48,13 +48,15 @@ const appendPageLinks = (list) => {
       
       paginationDiv.addEventListener('click', (e) => {
          
+         const a = document.querySelectorAll('.pagination li a');
+         for(let i = 0; i < a.length; i++) {
+           a[i].classList.remove('active') ;
+     }
+
                 const pageNumber = e.target.textContent;
                 event.target.className='active';
                 showPage(list,pageNumber);
-
-                for(let i = 0; i < paginationDiv.length; i++) {
-                  paginationAnchor[i].classList.remove('active') ;
-            }
+               
          
     });
 }
