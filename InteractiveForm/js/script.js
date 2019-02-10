@@ -228,6 +228,7 @@ if(
 &&  creditCard()
 )
 {
+    creditCard();
     alert('Success!');
             //console.log('Submited');
 } else {
