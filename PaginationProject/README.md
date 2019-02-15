@@ -1,0 +1,2 @@
+# tech_degree_new
+Long lists don't make for a good user experience on a web page. In this project, you'll enhance the usability of a web page that contains a long list by employing JavaScript to dynamically divide the list into "pages". 
